@@ -5,7 +5,8 @@
 body {
   margin: 0;
   padding: 20px;
-  font: 300 16px/1.5 "Roboto", Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font: 300 16px/1.5 "Roboto", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
   color: #111;
   background-color: #fdfdfd;
   -webkit-font-smoothing: antialiased;
@@ -13,8 +14,14 @@ body {
   max-width: 1000px;
 }
 
+.drop_zone {
+  border: 5px solid blue;
+  width: 800px;
+  height: 500px;
+}
+
 section {
-  background: #F2F2F2;
+  background: #f2f2f2;
   padding: 14px;
   margin-bottom: 48px;
 }
@@ -31,8 +38,10 @@ a:hover {
   text-decoration: none;
 }
 
-button, .button {
-  font-family: "Roboto", Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+button,
+.button {
+  font-family: "Roboto", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
   text-transform: uppercase;
   font-weight: 700;
   font-size: 16px;
@@ -46,7 +55,7 @@ button, .button {
   cursor: pointer;
 }
 button:hover {
-  background: #6FC9C6;
+  background: #6fc9c6;
   color: white;
 }
 button[disabled] {
