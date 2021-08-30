@@ -1,0 +1,87 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+  <link rel="stylesheet" href="./style.css">
+  <title>ArbitraryStyleTransferNetwork</title>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="dragFiles.js"></script>
+  <script src="pinataDropZone.js"></script>
+</head>
+
+<body>
+  <h1>mi.ArbitraryStyleTransferNetwork</h1>
+  <p>
+    <code>Style transfer</code> wraps around Reiichiro Nakano's
+    <a href="https://github.com/reiinakano/arbitrary-image-stylization-tfjs">TensorFlow.js port</a>
+    of Ghiasi et al.'s <a href="https://arxiv.org/abs/1705.06830">arbitrary stylization model</a>.
+    The demo below performs stylization on a content/style image pair by
+  </p>
+  <ul>
+    <li>
+      calling the <code>predictStyleParameters</code> method with the style
+      image to obtain a style representation, and
+    </li>
+    <li>
+      calling the <code>stylize</code> method with the content image and the
+      style representation to perform stylization.
+    </li>
+  </ul>
+  <p>
+    STYLIZER
+  </p>
+  <!-- <img id="content" height="256" class="image" src="content.jpg"/>
+  <img id="style" height="256" class="image" src="11content.jpg"/> -->
+
+  <!-- <form action="" method="POST" enctype="multipart/form-data" class="dropzone " role="form">        
+  <h3>Content file</h3>
+  <div id="content" class="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+    <p>Content file  Zone ...</p>
+  </div>
+  <h3>Style file</h3>
+  <div id="style" class="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+    <p>Style file's Drop Zone ...</p>
+  </div>
+  <canvas id="stylized" width="652" height="456" class="image"></canvas>
+  <br>
+  <button id="stylize" disabled>Stylize</button>
+  </form> -->
+  <a-scene>
+    <a-assets>
+      <a-asset-item id="tree" src="../../data-cad/model.gltf"></a-asset-item>
+    </a-assets>
+  
+    <a-entity gltf-model="#tree"></a-entity>
+  </a-scene>
+
+  <script>
+    AFRAME.registerComponent('modify-materials', {
+      init: function () {
+        // Wait for model to load.
+        this.el.addEventListener('model-loaded', () => {
+          // Grab the mesh / scene.
+          const obj = this.el.getObject3D('mesh');
+          // Go over the submeshes and modify materials we want.
+          obj.traverse(node => {
+            if (node.name.indexOf('ship') !== -1) {
+              node.material.color.set('red');
+            }
+          });
+        });
+      }
+    });
+  </script>
+  
+  <!-- <a-scene background="color: #ECECEC">
+    <a-assets>
+      <a-asset-item id="cityModel" src="https://cdn.aframe.io/test-models/models/glTF-2.0/virtualcity/VC.gltf"></a-asset-item>
+    </a-assets>
+    <a-entity gltf-model="#cityModel" modify-materials></a-entity>
+  </a-scene> -->
+
+  <script src="arbitrary_stylization_bundle.js"></script>
+</body>
+
+</html>
